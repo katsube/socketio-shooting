@@ -197,24 +197,28 @@ http.listen(PORT, ()=>{
  * @return {integer}
  */
 function getInitPos(size){
-  const min = Math.floor(size / 30);  // 端の30%は使わない
-  const max = size - min;             // 同上
+  const max = size - Math.floor((size / 10) * 3);
   return(
-    Math.floor( min + (Math.random() * max) )
+    Math.floor( (Math.random() * max) )
   );
 }
 
 /**
  * キャラクターを押されたキーに合わせて移動
  *
- * @param {string}  token  プレイヤー識別用の文字列
- * @param {integer} keycd  押下されたキーボード
- * @param {integer} step   1回の移動量
+ * @param {string}  socketid  プレイヤー識別用の文字列
+ * @param {integer} keycd     押下されたキーボード
+ * @param {integer} step      1回の移動量
  * @return {object}
  */
-function moveChar(token, keycd, step=10){
-  const pos = MEMBER[token].pos;    // 現在の座標を取得
+function moveChar(socketid, keycd, step=10){
+  const pos = MEMBER[socketid].pos;    // 現在の座標を取得
   let x, y;
+
+  // 初期値が入っていない状態で飛んで来た場合は何もしない
+  if( pos === null ){
+    return(null);
+  }
 
   // キャラの移動先を計算する
   switch(keycd){
@@ -240,7 +244,7 @@ function moveChar(token, keycd, step=10){
       break;
   }
 
-  console.log(`moveChar: token=${token}, keycd=${keycd}, x=${x}, y=${y}`);
+  console.log(`moveChar: socketid=${socketid}, keycd=${keycd}, x=${x}, y=${y}`);
   return({x:x, y:y});
 }
 
