@@ -1,0 +1,56 @@
+@charset "utf8";
+
+/*-------------------------
+ * STEP0. アセットのロード
+ *-------------------------*/
+ #nowloading {
+    text-align: center;
+}
+
+/*-------------------------
+ * STEP1. 接続
+ *-------------------------*/
+#nowconnecting {
+  display:none;
+  text-align: center;
+}
+
+/*-------------------------
+ * STEP2. キャラ選択
+ *-------------------------*/
+#inputmychara{
+  display:none;
+}
+#frm-chara-select{
+  display: flex;
+}
+#frm-chara-select input[type="radio"]{
+  display: none;
+}
+#frm-chara-select input[type="radio"]:checked + label{
+  border: 3px solid orange;
+}
+#frm-chara-select label{
+    display: block;
+    width: 200px;
+    height: 260px;
+}
+#frm-chara-select img{
+  cursor: pointer;
+}
+#frm-chara button{
+  width: 600px;
+  height: 50px;
+  font-size: 12pt;
+  margin-top: 30px;
+}
+
+/*-------------------------
+ * STEP3. 対戦
+ *-------------------------*/
+#battle{
+  display:none;
+}
+#battlefield{
+  border: 1px solid gray;
+}

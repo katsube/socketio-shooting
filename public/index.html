@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas Walk2 - Socket.IO Ver</title>
+  <link rel="stylesheet" href="style.css" type="text/css" media="all">
+</head>
+<body>
+
+<h1>Canvas Walk2</h1>
+
+<!-- STEP0. 読み込み中 -->
+<section id="nowloading">
+  <img src="/image/loading.svg" width="100"><br>
+  ...必要なアセットを読み込み中
+</section>
+<!-- /読み込み中 -->
+
+<!-- STEP1. 接続中 -->
+<section id="nowconnecting">
+  <img src="/image/loading.svg" width="100"><br>
+  ...サーバに接続中
+</section>
+<!-- /接続中 -->
+
+<!-- STEP2. キャラクターを選択 -->
+<section id="inputmychara">
+  <p>キャラクターを選択してください</p>
+  <form id="frm-chara">
+    <div id="frm-chara-select">
+      <input type="radio" id="radio-mychara1" name="radio-mychara" value="1" checked><label for="radio-mychara1"><img src="/image/1.png"></label>
+      <input type="radio" id="radio-mychara2" name="radio-mychara" value="2"><label for="radio-mychara2"><img src="/image/2.png"></label>
+      <input type="radio" id="radio-mychara3" name="radio-mychara" value="3"><label for="radio-mychara3"><img src="/image/3.png"></label>
+    </div>
+    <button>対戦開始</button>
+  </form>
+</section>
+<!-- /キャラクターを選択 -->
+
+<!-- STEP3. 対戦開始 -->
+<section id="battle">
+  <canvas id="battlefield" width="600" height="400"></canvas>
+</section>
+<!-- /対戦 -->
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="util.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
